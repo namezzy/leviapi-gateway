@@ -24,3 +24,12 @@ spring:
             - Path=/api/name/**
           filters:
             - AddRequestHeader=Levi, Xiaoxiaolovexmj
+            - AddRequestParameter=name, LoveLevi
+
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          gateway: trace
