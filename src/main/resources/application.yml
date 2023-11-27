@@ -1,15 +1,26 @@
 server:
   port: 8090
 
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+##        - id: after_route
+##          uri: https://nps.withlevi.top
+##          predicates:
+##            - After=2023-11-27T22:20:47.789+08:00[Asia/Shanghai]
+##        - id: before_route
+##          uri: https://blog.withlevi.top
+##          predicates:
+##            - Before=2023-11-27T22:20:47.789+08:00[Asia/Shanghai]
+
 spring:
   cloud:
     gateway:
       routes:
-        - id: after_route
-          uri: https://nps.withlevi.top
+        - id: add_request_header_route
+          uri: http://localhost:8123
           predicates:
-            - After=2023-11-27T22:20:47.789+08:00[Asia/Shanghai]
-        - id: before_route
-          uri: https://blog.withlevi.top
-          predicates:
-            - Before=2023-11-27T22:20:47.789+08:00[Asia/Shanghai]
+            - Path=/api/name/**
+          filters:
+            - AddRequestHeader=Levi, Xiaoxiaolovexmj
