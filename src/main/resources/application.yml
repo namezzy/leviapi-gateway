@@ -1,5 +1,16 @@
 server:
   port: 8090
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: api_route
+          uri: http://localhost:8123
+          predicates:
+            - Path=/api/**
+      default-filters:
+        - AddResponseHeader=source, Levi
+
 
 #spring:
 #  cloud:
@@ -14,17 +25,17 @@ server:
 ##          predicates:
 ##            - Before=2023-11-27T22:20:47.789+08:00[Asia/Shanghai]
 
-spring:
-  cloud:
-    gateway:
-      routes:
-        - id: add_request_header_route
-          uri: http://localhost:8123
-          predicates:
-            - Path=/api/name/**
-          filters:
-            - AddRequestHeader=Levi, Xiaoxiaolovexmj
-            - AddRequestParameter=name, LoveLevi
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: add_request_header_route
+#          uri: http://localhost:8123
+#          predicates:
+#            - Path=/api/name/**
+#          filters:
+#            - AddRequestHeader=Levi, Xiaoxiaolovexmj
+#            - AddRequestParameter=name, LoveLevi
 
 
 logging:
