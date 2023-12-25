@@ -10,6 +10,7 @@ spring:
             - Path=/api/**
       default-filters:
         - AddResponseHeader=source, Levi
+        - AddRequestHeader=levi, HelloXMJ
 
 
 #spring:
